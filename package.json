@@ -2,6 +2,9 @@
   "name": "portfolio-dev",
   "type": "module",
   "version": "0.0.1",
+  "imports": {
+    "#components/*": "./components/*"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -15,10 +18,12 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/onest": "^5.0.3",
     "@fontsource/audiowide": "^5.0.19",
+    "@iconify-json/tabler": "^1.1.109",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "astro": "^4.5.4",
     "astro-icon": "^1.1.0",
+    "astro-seo": "^0.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.72.0",

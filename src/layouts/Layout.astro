@@ -1,25 +1,37 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+import Header from "@/components/Header.astro";
 import "@fontsource/audiowide";
 // Supports weights 100-900
 import "@fontsource-variable/onest";
+import { getLangFromUrl } from "@/i18n/utils";
+import { SEO } from "astro-seo";
 interface Props {
   title: string;
+  seoTitle: string;
+  seoDesc: string;
 }
 
-const { title } = Astro.props;
+const { title, seoTitle, seoDesc } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
+    <SEO title={seoTitle} description={seoDesc} />
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <slot name="preload" />
+    <ViewTransitions />
   </head>
   <body>
+    <Header />
     <main>
       <slot />
     </main>
