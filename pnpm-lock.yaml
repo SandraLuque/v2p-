@@ -20,6 +20,9 @@ dependencies:
   '@fontsource/audiowide':
     specifier: ^5.0.19
     version: 5.0.19
+  '@fontsource/be-vietnam-pro':
+    specifier: ^5.0.19
+    version: 5.0.19
   '@iconify-json/tabler':
     specifier: ^1.1.109
     version: 1.1.109
@@ -758,6 +761,10 @@ packages:
 
   /@fontsource/audiowide@5.0.19:
     resolution: {integrity: sha512-damje42NmuZrL6LdKuFxT3jzXXlDmj8PD849VYOgjhSrUMxqLlwzaz503T/Hpl0KyUXvGQsVCvGjhcALlOcEGw==}
+    dev: false
+
+  /@fontsource/be-vietnam-pro@5.0.19:
+    resolution: {integrity: sha512-thhfXQCanIYBiIuDtaswiA35Yog5OVKD3MYxPhH2Tm70eXtlqLpEfA/ju/cjuJemL849gP57xjOvqvu7wjQcvg==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:

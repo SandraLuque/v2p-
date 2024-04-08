@@ -1,0 +1,66 @@
+---
+import NavLink from "./NavLink.astro";
+import { getI18N } from "@/i18n";
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "@/i18n/utils";
+import { Icon } from "astro-icon/components";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<nav class="navMobile fixed bottom-0 left-0 right-0 w-full p-2">
+  <NavLink
+    class="linkMovile text-sm"
+    href={translatePath("/")}
+    icon={{ nameIco: "tabler:home", side: "left" }}
+  >
+    {t("nav.inicio")}
+  </NavLink>
+  <NavLink
+    class="linkMovile text-sm"
+    href={translatePath("/#sobre-mi")}
+    icon={{ nameIco: "tabler:user-check", side: "left" }}
+  >
+    <NavLink
+      class="linkMovile text-sm"
+      href={translatePath("/#servicios")}
+      icon={{ nameIco: "tabler:user-check", side: "left" }}
+    >
+      {t("nav.sobre-mi")}
+    </NavLink>
+    <NavLink
+      class="linkMovile text-sm"
+      href={translatePath("/#proyectos")}
+      icon={{ nameIco: "tabler:code", side: "left" }}
+    >
+      {t("nav.proyectos")}
+    </NavLink>
+    <NavLink
+      class="linkMovile text-sm"
+      href={translatePath("/#contactos")}
+      icon={{ nameIco: "tabler:user-plus", side: "left" }}
+    >
+      {t("nav.contactos")}
+    </NavLink>
+  </NavLink>
+
+  <style>
+    .navMobile {
+      display: grid;
+      place-content: space-between;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .linkMovile {
+      display: grid;
+      place-items: center;
+    }
+  </style>
+</nav>

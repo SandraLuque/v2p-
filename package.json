@@ -18,6 +18,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource-variable/onest": "^5.0.3",
     "@fontsource/audiowide": "^5.0.19",
+    "@fontsource/be-vietnam-pro": "^5.0.19",
     "@iconify-json/tabler": "^1.1.109",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

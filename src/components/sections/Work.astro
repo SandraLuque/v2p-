@@ -1,0 +1,40 @@
+---
+import { getI18N } from "@/i18n";
+import MainSection from "./MainSection.astro";
+import Title from "@/components/Title.astro";
+import TitlesWithContent from "./TitlesWithContent.astro";
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+---
+
+<MainSection id="sobre-mi" type="container">
+  <TitlesWithContent type="secondary">
+    <h3 slot="title" set:html={i18n.SECTION_TWO_TITLE_TWO} />
+    <h2 slot="content" set:html={i18n.SECTION_TWO_SUBTITLE_TWO} />
+  </TitlesWithContent>
+  <TitlesWithContent type="secondary">
+    <div class="pt-32">
+      <h3 slot="title" class="mb-6" set:html={i18n.SECTION_TWO_TITLE_THREE} />
+      <ul class="grid grid-cols-1 divide-y">
+        <li class="grid gap-4 grid-cols-4 f-big py-7">
+          <div>AHORA</div>
+          <div class="col-span-3 leading-7">
+            <h4>Desarrollador Web freelance</h4>
+            <p class="f-small font-sans">Clinica Dermia</p>
+          </div>
+        </li>
+        <li class="grid gap-4 grid-cols-4 f-big py-7">
+          <div>2016 - 2022</div>
+          <div class="col-span-3 leading-7">
+            <h4>Diseñador y Desarrollador Web</h4>
+            <p class="f-small font-sans">Puridiom-Pe</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </TitlesWithContent>
+  <TitlesWithContent type="secondary" class="pt-32">
+    <h3 slot="title" class="mb-6" set:html={i18n.SECTION_TWO_TITLE_FOUR} />
+    <div>Trabajos</div>
+  </TitlesWithContent>
+</MainSection>

@@ -5,7 +5,7 @@ import {
   getRouteFromUrl,
   useTranslatedPath,
   getLangFromUrl,
-} from "../i18n/utils";
+} from "@/i18n/utils";
 
 const route = getRouteFromUrl(Astro.url);
 const lang = getLangFromUrl(Astro.url);
@@ -17,36 +17,22 @@ const otherLocales = Object.values(LANGUAGES).filter(
 );
 ---
 
-<div class="relative inline-block text-left">
-  <div
-    class="group text-white rounded-md text-xs font-semibold bg-black/30 hover:bg-black/70 transition-all"
-  >
-    <button
-      type="button"
-      class="inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
-      aria-expanded="true"
-      aria-haspopup="true"
-    >
-      <currentLocaleData.flag />
-      {currentLocaleData.name}
-      <Icon name="tabler:arrow-narrow-down" class="text-lg" stroke-width={1} />
-    </button>
-    <ul
-      class="group-hover:block group-hover:animate-fade-down group-hover:animate-duration-200 hidden pt-0.5 absolute w-full"
-    >
-      {
-        otherLocales.map((locale) => (
-          <li class="py-[2px]">
-            <a
-              class="rounded-md bg-black/30 hover:bg-black/70 whitespace-no-wrap inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
-              href={translatePath(`/${route ? route : ""}`, locale.code)}
-            >
-              <locale.flag />
-              {locale.name}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
+<div class="flex items-center gap-x-2">
+  <div class="text-primary">
+    {currentLocaleData.name}
   </div>
+  <ul>
+    {
+      otherLocales.map((locale) => (
+        <li class="before:content-['|']">
+          <a
+            class=" text-secondary"
+            href={translatePath(`/${route ? route : ""}`, locale.code)}
+          >
+            {locale.name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </div>

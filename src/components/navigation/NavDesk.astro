@@ -1,0 +1,56 @@
+---
+import NavLink from "./NavLink.astro";
+import { getI18N } from "@/i18n";
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "@/i18n/utils";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<!-- <nav class="navDesk absolute right-0 bg-codGray rounded-b-md gap-y-3"> -->
+<nav class="flex flex-col text-right">
+  <NavLink href={translatePath("/")}>
+    {t("nav.inicio")}
+  </NavLink>
+  <NavLink href={translatePath("/#sobre-mi")}>
+    {t("nav.sobre-mi")}
+  </NavLink>
+  <NavLink href={translatePath("/#servicios")}>
+    {t("nav.services")}
+  </NavLink>
+  <NavLink href={translatePath("/#proyectos")}>
+    {t("nav.proyectos")}
+  </NavLink>
+  <NavLink href={translatePath("/#contactos")}>
+    {t("nav.contactos")}
+  </NavLink>
+</nav>
+<style lang="scss">
+  .navDesk {
+    top: calc(100% + 0.5rem);
+    width: calc(100vw - 40px);
+    max-width: 249px;
+    padding: 17px 30px 36px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.5s ease,
+      visibility 0.5s ease;
+  }
+  .expanded {
+    &.navDesk {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+</style>

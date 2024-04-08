@@ -1,9 +1,49 @@
 ---
-import LanguageSelector from "./LanguageSelector.astro";
+import MainIcon from "@/components/MainIcon.astro";
+import LanguageSelector from "@/components/LanguageSelector.astro";
+import { getI18N } from "@/i18n/";
+import {
+  getLangFromUrl,
+  useTranslations,
+  useTranslatedPath,
+} from "../i18n/utils";
+
+import Hamburger from "./navigation/Hamburger.astro";
+import NavDesk from "./navigation/NavDesk.astro";
+import NavMobile from "./navigation/NavMobile.astro";
+import NavViewport from "./navigation/NavViewport";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
 ---
 
-<header>
-  <div>
-    <LanguageSelector />
+<header
+  class="fixed inset-x-0 top-0 z-50 w-full max-lg:px-4 max-md:px-3 max-sm:px-2 pt-4"
+>
+  <div class="mx-auto w-full lg:px-4 sm:px-2 max-lg:gap-y-10 sm:py-3.5">
+    <div class="grid grid-cols-3 justify-between">
+      <div>
+        <span class="uppercase">
+          <span set:html={i18n.HEADER_ESLOGAN} />
+          <strong set:html={i18n.HEADER_ESLOGAN_2} />
+        </span>
+      </div>
+      <div class="grid justify-center">
+        <MainIcon class="w-5 sm:w-7 lg:w-10 fill-secondary" />
+      </div>
+      <div class="relative grid justify-end gap-x-3 gap-y-2 z-10">
+        <LanguageSelector />
+        <div>
+          <NavViewport client:only>
+            <NavDesk slot="navDesk" />
+            <NavMobile slot="navMobile" />
+          </NavViewport>
+        </div>
+      </div>
+    </div>
   </div>
 </header>

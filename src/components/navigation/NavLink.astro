@@ -1,0 +1,42 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  checkActive?: boolean;
+  href: string;
+  icon?: {
+    nameIco: string;
+    side: "left" | "right";
+  };
+  class?: string;
+}
+
+const {
+  href,
+  icon,
+  class: className,
+  checkActive = true,
+  ...restOfProps
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const isActive = currentPath === href && checkActive;
+---
+
+<a
+  href={href}
+  class:list={[className, "text-secondary", isActive ? "primary" : ""]}
+  {...restOfProps}
+>
+  {
+    icon && icon.side === "left" && (
+      <Icon name={icon.nameIco} height={24} width={24} />
+    )
+  }
+  <slot />
+  {
+    icon && icon.side === "right" && (
+      <Icon name={icon.nameIco} height={24} width={24} />
+    )
+  }
+</a>

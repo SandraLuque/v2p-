@@ -1,14 +1,60 @@
 ---
 import { getI18N } from "@/i18n";
 import { getLangFromUrl, useTranslatedPath } from "@/i18n/utils";
+import MainSection from "./sections/MainSection.astro";
+import TitlesWithContent from "./sections/TitlesWithContent.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
 
 const { currentLocale } = Astro;
+console.log(currentLocale);
 const i18n = getI18N({ currentLocale });
+const isEn = currentLocale === "en";
 ---
 
-<div>
-  <p>{i18n.HERO_SUBTITLE}</p>
+<div class="h-[100vh] bg-codGray grid overflow-hidden">
+  <div class="w-[100%] grid md:grid-cols-2 grid-cols-1 px-20 pt-20">
+    <div class="w-[95%] md:w-auto">
+      <div
+        class:list={[
+          `avatar pt-[100%]  bg-[url('/avatar.webp')] hover:bg-[url('/avatar-smile.webp')] bg-no-repeat bg-cover duration-500 ease-in-out`,
+          { isEn: isEn },
+        ]}
+      >
+      </div>
+    </div>
+    <div class="relative">
+      <TitlesWithContent
+        class="lg:absolute lg:translate-y-[-50%] lg:top-[50%] lg:left-[-13%]"
+        type="primary"
+      >
+        <h3 slot="title" set:html={i18n.HERO_TITLE_ONE} />
+        <h1
+          slot="content"
+          class="text-primary"
+          set:html={i18n.HERO_TITLE_ROLE_ONE}
+        />
+        <h1
+          slot="content"
+          class="text-primary"
+          set:html={i18n.HERO_TITLE_ROLE}
+        />
+        <h1 slot="content" set:html={i18n.HERO_TITLE_WELCOME_ONE} />
+        <h1 slot="content" set:html={i18n.HERO_TITLE_WELCOME_TWO} />
+      </TitlesWithContent>
+    </div>
+  </div>
 </div>
+<style lang="scss">
+  .title {
+    top: 50%;
+  }
+  .avatar {
+    mask-image: linear-gradient(#0e0e0e 80%, transparent);
+    // &.isEn {
+    //   left: 50%;
+    //   transform: translateX(-50%);
+    // }
+  }
+</style>
