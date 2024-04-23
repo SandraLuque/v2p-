@@ -1,8 +1,10 @@
 ---
 import { getI18N } from "@/i18n";
 import { getLangFromUrl, useTranslatedPath } from "@/i18n/utils";
-import MainSection from "./sections/MainSection.astro";
+
 import TitlesWithContent from "./sections/TitlesWithContent.astro";
+import { Greetings } from "./Greetings";
+import avatarImage from "/avatar.webp";
 
 const lang = getLangFromUrl(Astro.url);
 const translatePath = useTranslatedPath(lang);
@@ -11,50 +13,128 @@ const { currentLocale } = Astro;
 console.log(currentLocale);
 const i18n = getI18N({ currentLocale });
 const isEn = currentLocale === "en";
+
+const bkg = "avatar.webp";
 ---
 
-<div class="h-[100vh] bg-codGray grid overflow-hidden">
-  <div class="w-[100%] grid md:grid-cols-2 grid-cols-1 px-20 pt-20">
-    <div class="w-[95%] md:w-auto">
-      <div
-        class:list={[
-          `avatar pt-[100%]  bg-[url('/avatar.webp')] hover:bg-[url('/avatar-smile.webp')] bg-no-repeat bg-cover duration-500 ease-in-out`,
-          { isEn: isEn },
-        ]}
-      >
+<div
+  class="h-screen relative grid bg-gradient-radial from-secondColor to-secondColorAlt to-90%"
+>
+  <div class="blur-circle"></div>
+  <div class="place-self-center text-center grid gap-y-12">
+    <div class="text-base grid gap-y-2">
+      <h3>
+        <Greetings
+          client:load
+          locale={lang}
+          morning={i18n.HERO_GREETING_MORNING}
+          afternoon={i18n.HERO_GREETING_AFTERNOON}
+          evening={i18n.HERO_GREETING_EVENING}
+        />
+      </h3>
+      <div class="avatar-lines">
+        <div class="developer">
+          <figure>
+            <img
+              src="/avatarColor.webp"
+              class="object-fit-cover h-full"
+              loading="lazy"
+            />
+          </figure>
+        </div>
       </div>
+      <h3 class="text-primary" set:html={i18n.MANE} />
     </div>
-    <div class="relative">
-      <TitlesWithContent
-        class="lg:absolute lg:translate-y-[-50%] lg:top-[50%] lg:left-[-13%]"
-        type="primary"
-      >
-        <h3 slot="title" set:html={i18n.HERO_TITLE_ONE} />
-        <h1
-          slot="content"
-          class="text-primary"
+    <div>
+      <h1 class="text-5xl font-headerFont leading-none">
+        <p
+          class="role"
           set:html={i18n.HERO_TITLE_ROLE_ONE}
+          data-text={i18n.HERO_TITLE_ROLE_ONE}
         />
-        <h1
-          slot="content"
-          class="text-primary"
+        <p
+          class="role"
           set:html={i18n.HERO_TITLE_ROLE}
+          data-text={i18n.HERO_TITLE_ROLE}
         />
-        <h1 slot="content" set:html={i18n.HERO_TITLE_WELCOME_ONE} />
-        <h1 slot="content" set:html={i18n.HERO_TITLE_WELCOME_TWO} />
-      </TitlesWithContent>
+      </h1>
     </div>
   </div>
 </div>
 <style lang="scss">
-  .title {
-    top: 50%;
+  .blur-circle {
+    width: 60vw;
+
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(#6b79ee 0%, rgba(107, 121, 238, 0) 70%);
+    position: absolute;
+    translate: none;
+    rotate: none;
+    scale: none;
+    opacity: 0.3;
+    transform: translate(-50%, -50%) translate(0.203px, 0.203px);
+    left: 50%;
+    top: 65%;
   }
-  .avatar {
+  .avatar-lines {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    &::before {
+      content: "";
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(216, 236, 248, 0),
+        rgba(240, 173, 93, 0.32)
+      );
+      width: 86px;
+    }
+    &:after {
+      content: "";
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(216, 236, 248, 0),
+        rgba(240, 173, 93, 0.32)
+      );
+      width: 86px;
+      transform: rotate(180deg);
+    }
+  }
+  .role {
+    position: relative;
+    &:after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      opacity: 60%;
+      filter: blur(3px);
+    }
+  }
+  .developer {
+    width: 135px;
+    height: 135px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  .title {
+    position: absolute;
+    top: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 7rem;
+    font-weight: 900;
+  }
+  .image {
+    background-size: 50%;
+    background-position: 100% 0;
     mask-image: linear-gradient(#0e0e0e 80%, transparent);
-    // &.isEn {
-    //   left: 50%;
-    //   transform: translateX(-50%);
-    // }
   }
 </style>

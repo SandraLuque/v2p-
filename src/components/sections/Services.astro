@@ -1,95 +1,98 @@
 ---
 import { getI18N } from "@/i18n";
 import MainSection from "./MainSection.astro";
+import Title from "./Title.astro";
 import TitlesWithContent from "./TitlesWithContent.astro";
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
-<MainSection id="servicios" type="full" class="rounded-t-3xl pt-32 bg-codGray">
+<MainSection id="servicios" type="full" class="rounded-t-3xl pt-32 bg-bgBody">
   <div class="ctBase">
-    <TitlesWithContent type="secondary">
-      <h3 slot="title" set:html={i18n.SECTION_SERVICES_TITLE} />
-      <h2 slot="content" set:html={i18n.SECTION_SERVICES_SUBTITLE} />
-      <div class="mt-12 divide-y-[1px] divide-codGray900 flex flex-col">
-        <div class="sticky top-0 pst1 bg-codGray">
-          <div>
-            <h3
-              class="f-big tracking-[0.25em] py-4"
-              set:html={i18n.SECTION_SERVICES_DEVELOPER}
-            />
-          </div>
-          <div class="grid grid-cols-2 font-sans gap-9 pb-8">
-            <div>
-              <p
-                class="font-normal text-pretty leading-[130%]"
-                set:html={i18n.SECTION_SERVICES_DEV_DESCRIP}
-              />
-            </div>
-            <div class="f-big leading-normal">
-              <p>React.js</p>
-              <p>Astro</p>
-            </div>
-          </div>
+    <Title text={i18n.SECTION_SERVICES_TITLE} />
+    <p
+      class="text-base md:text-mediun"
+      set:html={i18n.SECTION_SERVICES_SUBTITLE}
+    />
+    <div></div>
+    <div class="mt-10 divide-y-[1px] divide-codGray900 flex flex-col">
+      <div class="sticky top-0 pst1 bg-bgBody">
+        <div>
+          <h3
+            class="tracking-[0.25em] py-4 font-headerFont text-3xl"
+            set:html={i18n.SECTION_SERVICES_DEVELOPER}
+          />
         </div>
-        <div class="sticky top-0 pst2 bg-codGray">
+        <div class="grid grid-cols-2 font-sans gap-9 pb-8">
           <div>
-            <h3
-              class="f-big tracking-[0.25em] py-4"
-              set:html={i18n.SECTION_SERVICES_DESIGN}
+            <p
+              class="text-base text-pretty leading-[130%]"
+              set:html={i18n.SECTION_SERVICES_DEV_DESCRIP}
             />
           </div>
-          <div class="grid grid-cols-2 font-sans gap-9 pb-8">
-            <div>
-              <p
-                class="font-normal text-pretty leading-[130%]"
-                set:html={i18n.SECTION_SERVICES_DESIGN_DESCRIP}
-              />
-            </div>
-            <div class="f-big leading-normal">
-              <p set:html={i18n.SECTION_SERVICES_DESIGN_ONE} />
-              <p>UX / UI</p>
-            </div>
-          </div>
-        </div>
-        <div class="sticky top-0 pst3 bg-codGray">
-          <div>
-            <h3
-              class="f-big tracking-[0.25em] py-4"
-              set:html={i18n.SECTION_SERVICES_SEO}
-            />
-          </div>
-          <div class="grid grid-cols-2 font-sans gap-9 pb-8">
-            <div>
-              <p
-                class="font-normal text-pretty leading-[130%]"
-                set:html={i18n.SECTION_SERVICES_SEO_DESCRIP}
-              />
-            </div>
-            <div class="f-big leading-normal">
-              <p set:html={i18n.SECTION_SERVICES_SEO_ONE} />
-              <p set:html={i18n.SECTION_SERVICES_SEO_TWO} />
-            </div>
+          <div class="leading-normal text-xl font-semibold">
+            <p>React.js</p>
+            <p>Astro</p>
           </div>
         </div>
       </div>
-    </TitlesWithContent>
+      <div class="sticky top-0 pst2 bg-bgBody">
+        <div>
+          <h3
+            class="tracking-[0.25em] py-4 font-headerFont text-3xl"
+            set:html={i18n.SECTION_SERVICES_DESIGN}
+          />
+        </div>
+        <div class="grid grid-cols-2 font-sans gap-9 pb-8">
+          <div>
+            <p
+              class="text-base text-pretty leading-[130%]"
+              set:html={i18n.SECTION_SERVICES_DESIGN_DESCRIP}
+            />
+          </div>
+          <div class="leading-normal text-xl font-semibold">
+            <p set:html={i18n.SECTION_SERVICES_DESIGN_ONE} />
+            <p>UX / UI</p>
+          </div>
+        </div>
+      </div>
+      <div class="sticky top-0 pst3 bg-bgBody">
+        <div>
+          <h3
+            class="tracking-[0.25em] py-4 font-headerFont text-3xl"
+            set:html={i18n.SECTION_SERVICES_SEO}
+          />
+        </div>
+        <div class="grid grid-cols-2 font-sans gap-9 pb-8">
+          <div>
+            <p
+              class="text-base text-pretty leading-[130%]"
+              set:html={i18n.SECTION_SERVICES_SEO_DESCRIP}
+            />
+          </div>
+          <div class="leading-normal text-xl font-semibold">
+            <p set:html={i18n.SECTION_SERVICES_SEO_ONE} />
+            <p set:html={i18n.SECTION_SERVICES_SEO_TWO} />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </MainSection>
 
 <style>
   .pst1 {
     top: calc(20vh + 0em);
-    margin-bottom: 15.25em;
+    margin-bottom: 17.25em;
   }
   .pst2 {
-    top: calc(20vh + 3.75em);
+    top: calc(20vh + 5.75em);
     margin-bottom: 11.5em;
   }
   .pst3 {
     /* top: calc(20vh + 11.5em);
     margin-bottom: 5.75em; */
-    top: calc(20vh + 6.5em);
-    margin-bottom: 7.75em;
+    top: calc(20vh + 7.5em);
+    margin-bottom: 6.75em;
   }
 </style>

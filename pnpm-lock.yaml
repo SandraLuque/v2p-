@@ -14,15 +14,12 @@ dependencies:
   '@astrojs/tailwind':
     specifier: ^5.1.0
     version: 5.1.0(astro@4.5.4)(tailwindcss@3.4.1)
-  '@fontsource-variable/onest':
-    specifier: ^5.0.3
-    version: 5.0.3
-  '@fontsource/audiowide':
-    specifier: ^5.0.19
-    version: 5.0.19
-  '@fontsource/be-vietnam-pro':
-    specifier: ^5.0.19
-    version: 5.0.19
+  '@fontsource-variable/anybody':
+    specifier: ^5.0.21
+    version: 5.0.21
+  '@fontsource/roboto':
+    specifier: ^5.0.13
+    version: 5.0.13
   '@iconify-json/tabler':
     specifier: ^1.1.109
     version: 1.1.109
@@ -755,16 +752,12 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource-variable/onest@5.0.3:
-    resolution: {integrity: sha512-vqeDrKg3Ysl4rOepz2N6PnFZ+/EjrmhOv9/pJ+tCn0y00ralsEsCog0xPK6T1hx8Vt70agNR4Jb9C+KWr/K3sg==}
+  /@fontsource-variable/anybody@5.0.21:
+    resolution: {integrity: sha512-mO45dEMNez9nj1G91B9tn531q0MtQU0dnS9MLP0IfTAJH7QYkdicg5Cw22TBatK0VDMgg/TBRszgCvc4gciA5Q==}
     dev: false
 
-  /@fontsource/audiowide@5.0.19:
-    resolution: {integrity: sha512-damje42NmuZrL6LdKuFxT3jzXXlDmj8PD849VYOgjhSrUMxqLlwzaz503T/Hpl0KyUXvGQsVCvGjhcALlOcEGw==}
-    dev: false
-
-  /@fontsource/be-vietnam-pro@5.0.19:
-    resolution: {integrity: sha512-thhfXQCanIYBiIuDtaswiA35Yog5OVKD3MYxPhH2Tm70eXtlqLpEfA/ju/cjuJemL849gP57xjOvqvu7wjQcvg==}
+  /@fontsource/roboto@5.0.13:
+    resolution: {integrity: sha512-j61DHjsdUCKMXSdNLTOxcG701FWnF0jcqNNQi2iPCDxU8seN/sMxeh62dC++UiagCWq9ghTypX+Pcy7kX+QOeQ==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.14:

@@ -3,21 +3,21 @@ import { factory } from "typescript";
 
 interface Props {
   class?: string;
-  type: "primary" | "secondary";
+  type?: "primary" | "secondary";
   subtitle?: boolean;
 }
 
 const { class: className, subtitle = false, type } = Astro.props;
 ---
 
-<div class:list={[className, type, "font-semibold font-beVietnam lh-1"]}>
-  <div class="tracking-[0.25em] mb-6">
+<div class:list={[className, type, "lh-1"]}>
+  <div class="tracking-[0.25em] mb-6 font-headerFont">
     <slot name="title" />
   </div>
 
   {subtitle && <slot name="subtitle" />}
 
-  <div class:list={[type === "primary" ? "f-biggest" : "f-biger"]}>
+  <div class="font-headerFont">
     <slot name="content" />
   </div>
 

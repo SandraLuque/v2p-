@@ -1,14 +1,12 @@
 ---
 import { getI18N } from "@/i18n";
 import MainSection from "./MainSection.astro";
-import TitlesWithContent from "./TitlesWithContent.astro";
+import Title from "./Title.astro";
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
 ---
 
 <MainSection id="sobre-mi" type="container" class="pb-32">
-  <TitlesWithContent type="secondary">
-    <h3 slot="title" set:html={i18n.SECTION_ABOUT_TITLE} />
-    <h2 slot="content" set:html={i18n.SECTION_ABOUT_SUBTITLE} />
-  </TitlesWithContent>
+  <Title text={i18n.SECTION_ABOUT_TITLE} />
+  <p class="text-base md:text-mediun" set:html={i18n.SECTION_ABOUT_SUBTITLE} />
 </MainSection>
