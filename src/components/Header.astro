@@ -12,7 +12,7 @@ import Hamburger from "./navigation/Hamburger.astro";
 import NavDesk from "./navigation/NavDesk.astro";
 import NavMobile from "./navigation/NavMobile.astro";
 import NavViewport from "./navigation/NavViewport";
-import Logo from "@/components/Logo";
+import Logo from "@/components/navigation/Logo.astro";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -23,16 +23,16 @@ const translatePath = useTranslatedPath(lang);
 ---
 
 <header
-  class="absolute inset-x-0 top-0 z-50 w-full max-lg:px-4 max-md:px-3 max-sm:px-2 pt-4"
+  class="fixed inset-x-0 top-0 z-50 w-full max-lg:px-4 max-md:px-3 max-sm:px-2 pt-4 header-bar"
 >
   <div class="mx-auto w-full lg:px-4 sm:px-2 max-lg:gap-y-10 sm:py-3.5">
     <div class="flex justify-between">
       <div class="grid justify-center gap-3">
-        <Logo client:only />
-        <span>
+        <Logo width="9rem" />
+        <!-- <span>
           <span set:html={i18n.HEADER_ESLOGAN} />
           <strong set:html={i18n.HEADER_ESLOGAN_2} />
-        </span>
+        </span> -->
         <!-- <MainIcon class="w-5 sm:w-7 lg:w-10 fill-secondary" /> -->
       </div>
       <div class="relative grid justify-end z-10">
@@ -45,3 +45,9 @@ const translatePath = useTranslatedPath(lang);
     </div>
   </div>
 </header>
+<style lang="scss">
+  .header-bar {
+    opacity: 1;
+    transition: opacity 0.3s;
+  }
+</style>

@@ -17,9 +17,7 @@ const isEn = currentLocale === "en";
 const bkg = "avatar.webp";
 ---
 
-<div
-  class="h-screen relative grid bg-gradient-radial from-secondColor to-secondColorAlt to-90%"
->
+<div class="h-screen relative grid">
   <div class="blur-circle"></div>
   <div class="place-self-center text-center grid gap-y-12">
     <div class="text-base grid gap-y-2">
@@ -43,10 +41,10 @@ const bkg = "avatar.webp";
           </figure>
         </div>
       </div>
-      <h3 class="text-primary" set:html={i18n.MANE} />
+      <h3 set:html={i18n.MANE} />
     </div>
     <div>
-      <h1 class="text-5xl font-headerFont leading-none">
+      <h1 class="text-5xl font-headerFont leading-none font-medium">
         <p
           class="role"
           set:html={i18n.HERO_TITLE_ROLE_ONE}

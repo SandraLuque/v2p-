@@ -1,9 +1,14 @@
 ---
 import { ViewTransitions } from "astro:transitions";
+import { ScrollObserver } from "astro-scroll-observer";
 import Header from "@/components/Header.astro";
 // Supports weights 100-900
 import "@fontsource-variable/anybody";
 import "@fontsource/roboto";
+import "@fontsource-variable/nunito";
+import "@fontsource/chakra-petch/400.css";
+import "@fontsource/chakra-petch/500.css";
+import "@fontsource/chakra-petch/600.css";
 import "../app.css";
 import { getLangFromUrl } from "@/i18n/utils";
 import { SEO } from "astro-seo";
@@ -29,6 +34,7 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <slot name="preload" />
+    <ScrollObserver />
     <ViewTransitions />
   </head>
   <body class="bg-secondColor text-textColor">
@@ -36,5 +42,55 @@ const lang = getLangFromUrl(Astro.url);
     <main>
       <slot />
     </main>
-  </body>
+    <div class="noise bg-[url('/noise.png')]"></div>
+  </body><style lang="scss">
+    .noise {
+      animation: noise 1.2s steps(3) infinite both;
+      height: 200%;
+      left: -50%;
+      opacity: 0.1;
+      pointer-events: none;
+      position: fixed;
+      top: -50%;
+      width: 200%;
+      z-index: 99998;
+    }
+    @keyframes noise {
+      0% {
+        transform: translate3d(1%, -1%, 0);
+      }
+      10% {
+        transform: translate3d(-5%, -2%, 0);
+      }
+
+      20% {
+        transform: translate3d(10%, 5%, 0);
+      }
+      30% {
+        transform: translate3d(5%, -11%, 0);
+      }
+      40% {
+        -webkit-transform: translate3d(-12%, -5%, 0);
+        transform: translate3d(-12%, -5%, 0);
+      }
+      50% {
+        transform: translate3d(10%, 9%, 0);
+      }
+      60% {
+        transform: translate3d(15%, 0, 0);
+      }
+      70% {
+        transform: translate3d(-10%, 8%, 0);
+      }
+      80% {
+        transform: translate3d(10%, 2%, 0);
+      }
+      90% {
+        transform: translate3d(1%, 5%, 0);
+      }
+      100% {
+        transform: translate3d(0, 8%, 0);
+      }
+    }
+  </style>
 </html>
