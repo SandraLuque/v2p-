@@ -30,13 +30,13 @@ const isActive = currentPath === href && checkActive;
 >
   {
     icon && icon.side === "left" && (
-      <Icon name={icon.nameIco} height={24} width={24} />
+      <Icon name={icon.nameIco} height={21} width={21} />
     )
   }
   <slot />
   {
     icon && icon.side === "right" && (
-      <Icon name={icon.nameIco} height={24} width={24} />
+      <Icon name={icon.nameIco} height={21} width={21} />
     )
   }
 </a>

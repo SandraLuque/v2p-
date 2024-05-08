@@ -1,0 +1,74 @@
+---
+import NavLink from "./NavLink.astro";
+import {
+  getLangFromUrl,
+  useTranslatedPath,
+  useTranslations,
+} from "@/i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const translatePath = useTranslatedPath(lang);
+---
+
+<nav class="nav fixed bottom-[34px] p-2 md:rounded-md">
+  <div class="inner flex items-center gap-4 p-2 md:rounded-md">
+    <NavLink
+      class="flex gap-1 text-sm"
+      href={translatePath("/")}
+      icon={{ nameIco: "tabler:home", side: "left" }}
+    >
+      {t("nav.inicio")}
+    </NavLink>
+    <NavLink
+      class="flex gap-1 text-sm"
+      href={translatePath("/#sobre-mi")}
+      icon={{ nameIco: "tabler:device-desktop-code", side: "left" }}
+    >
+      {t("nav.services")}
+    </NavLink>
+    <NavLink
+      class="flex gap-1 text-sm"
+      href={translatePath("/#servicios")}
+      icon={{ nameIco: "tabler:user-code", side: "left" }}
+    >
+      {t("nav.sobre-mi")}
+    </NavLink>
+    <NavLink
+      class="flex gap-1 text-sm"
+      href={translatePath("/#proyectos")}
+      icon={{ nameIco: "tabler:source-code", side: "left" }}
+    >
+      {t("nav.proyectos")}
+    </NavLink>
+    <NavLink
+      class="flex gap-1 text-sm"
+      href={translatePath("/#contactos")}
+      icon={{ nameIco: "tabler:message-plus", side: "left" }}
+    >
+      {t("nav.contactos")}
+    </NavLink>
+  </div>
+</nav>
+
+<style lang="scss">
+  .nav {
+    left: 50%;
+    background-color: oklch(var(--b1) / 0.25);
+    z-index: 9;
+    transform: translate(-50%, 0%) translate(-0.219px, 110px);
+    transition: all 0.25s ease-in-out;
+    .inner {
+      background-color: oklch(var(--b1) / 0.5);
+    }
+    @include scroll-is(
+      $going-up: true,
+      $top: true,
+      $bottom: true,
+      $scoped: true
+    ) {
+      pointer-events: inherit;
+
+      transform: translate(-50%, 0%) translate(-0.219px, 0px);
+    }
+  }
+</style>

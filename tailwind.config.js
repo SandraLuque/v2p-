@@ -9,7 +9,7 @@ export default {
       colors: {
         firstColor: "#d62e49",
         secondColorLight: "#222650",
-        secondColor: "#1d2145",
+        secondColor: "#211D30",
         secondColorAlt: "#151833",
         textColor: "#EEEEF2",
       },

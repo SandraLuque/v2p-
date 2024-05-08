@@ -25,6 +25,22 @@
   font-display: swap;
   font-style: normal;
 }
+@layer base {
+  :root {
+    --p: 56.73% 0.295 303.87;
+    --n: 100% 0 0;
+    --b1: 16.8416% 0 0;
+    --b2: 20.9036% 0 0;
+    --b3: 38.6654% 0 0;
+    --bc: 58.9712% 0 0;
+    --tw-text-opacity: 1;
+    --tw-blur: blur(200px);
+  }
+  body {
+    background-color: oklch(var(--b1) / 1);
+    color: oklch(var(--n) / var(--tw-text-opacity));
+  }
+}
 @layer utilities {
   .font-light {
     font-variation-settings: "wght" 300;
